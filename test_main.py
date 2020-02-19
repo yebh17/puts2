@@ -16,6 +16,10 @@ class TestCalculator(unittest.TestCase):
     def test_add(self):
         resp = self.app.get('/add?A=1&B=5')
         self.assertEqual(b'6 \n', resp.data)
+    # Testing for multiplication using integers
+    def test_mul(self):
+        resp = self.app.get('/mul?A=1&B=5')
+        self.assertEqual(b'5 \n', resp.data)
 
 if __name__ == '__main__':
     unittest.main()
