@@ -7,11 +7,11 @@ def index():
     return 'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n'
 
 
-@app.route('/add', methods = ['POST', 'GET'])
+@app.route('/sub', methods = ['POST', 'GET'])
 def addition():
     value1=request.args.get('A',default = 0, type = int)
     value2=request.args.get('B',default = 0, type = int)
-    result=value1+value2
+    result=value1-value2
     return '%d \n' % result
 
 @app.route('/sub', methods = ['POST', 'GET'])
