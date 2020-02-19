@@ -20,6 +20,9 @@ class TestCalculator(unittest.TestCase):
     def test_mul(self):
         resp = self.app.get('/mul?A=1&B=5')
         self.assertEqual(b'5 \n', resp.data)
-
+    # Testing for division using integers
+    def test_div(self):
+        resp = self.app.get('/div?A=5&B=1')
+        self.assertEqual(b'5 \n', resp.data)
 if __name__ == '__main__':
     unittest.main()
