@@ -23,7 +23,7 @@ class TestCalculator(unittest.TestCase):
     # Testing for division
     def test_div(self):
 
-        # Testing for division using integers.
+        # Testing for division using integrals.
         resp = self.app.get('/div?A=24&B=12')
         self.assertEqual(b'Value by dividing A & B is: 2 \n', resp.data)
 
@@ -35,9 +35,45 @@ class TestCalculator(unittest.TestCase):
         resp = self.app.get('/div?A=11&B=7')
         self.assertEqual(b'Roundup value upto three digits by dividing A & B values is: 1.571 \n', resp.data)
 
+        #Testing for A value as integer and B value as float.
+        resp = self.app.get('/div?A=11&B=3.174')
+        self.assertEqual(b'Roundup value upto three digits by dividing A & B values is: 3.466 \n', resp.data)
+
+        #Testing for A value as integer and B value as float.
+        resp = self.app.get('/div?A=5.123&B=13')
+        self.assertEqual(b'Roundup value upto three digits by dividing A & B values is: 0.394 \n', resp.data)      
+
         # Testing for division for both float values.
         resp = self.app.get('/div?A=0.2&B=0.3')
         self.assertEqual(b'Roundup value upto three digits by dividing A & B values is: 0.667 \n', resp.data)
+
+        #Testing for A value as integer and B value as fraction.
+        resp = self.app.get('/div?A=5&B=2/3')
+        self.assertEqual(b'Roundup value upto three digits by dividing A & B values is: 7.500 \n', resp.data)
+
+        #Testing for A value as fraction and B value as integer.
+        resp = self.app.get('/div?A=2/3&B=7')
+        self.assertEqual(b'Roundup value upto three digits by dividing A & B values is: 0.095 \n', resp.data)
+
+        #Testing for A's value as, denominator is a zero and numerator is an integer.
+        resp = self.app.get('/div?A=2/0&B=7')
+        self.assertEqual(b'Error: undefined value!, denominator of A value should not be a zero! \n', resp.data) 
+
+         #Testing for B's value as, denominator is a zero and numerator is an integer.
+        resp = self.app.get('/div?A=2&B=7/0')
+        self.assertEqual(b'Error: undefined value!, denominator of B value should not be a zero! \n', resp.data) 
+
+        #Testing for A as integer and B is zero.
+        resp = self.app.get('/div?A=2&B=0')
+        self.assertEqual(b'Error: undefined value!, denominator should not be a zero! \n', resp.data)
+
+        #Testing for A as an non numerical case.
+        resp = self.app.get('/div?A=hej&B=21')
+        self.assertEqual(b'Error: The A value should be a numerical and it can be integer, fractional, floats! \n', resp.data)
+
+        #Testing for B as an non numerical case.
+        resp = self.app.get('/div?A=21&B=hello')
+        self.assertEqual(b'Error: The B value should be a numerical and it can be integer, fractional, floats! \n', resp.data)
 
 if __name__ == '__main__':
     unittest.main()

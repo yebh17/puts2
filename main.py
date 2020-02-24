@@ -42,15 +42,15 @@ def division():
     try:
         value1 = Fraction(value1)
     except ZeroDivisionError:
-        return "Error: undefined value!, denominator should not be a zero! \n"
+        return "Error: undefined value!, denominator of A value should not be a zero! \n"
     except ValueError:
-        return "Error: The A's value should be a numerical! \n"
+        return "Error: The A value should be a numerical and it can be integer, fractional, floats! \n"
     try:
         value2 = Fraction(value2)
     except ValueError:
-        return "Error: The A's value should be a numerical! \n"
+        return "Error: The B value should be a numerical and it can be integer, fractional, floats! \n"
     except ZeroDivisionError:
-        return "Error: undefined value!, denominator should not be a zero! \n"
+        return "Error: undefined value!, denominator of B value should not be a zero! \n"
     try: 
         result = ((value1)/(value2))
     except ZeroDivisionError:
