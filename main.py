@@ -54,11 +54,11 @@ def division():
     try: 
         result = ((value1)/(value2))
     except ZeroDivisionError:
-        return "Error: undefined value!, denominator should not be a zero! \n"
+        return "Error: undefined value!, denominator B should not be a zero! \n"
     else:
         if float(result).is_integer():
             result = int(result)
             return("Value by dividing A & B is: " '%d \n' % result)
         return("Roundup value upto three digits by dividing A & B values is: " '%.3f \n' % result)
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

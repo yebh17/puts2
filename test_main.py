@@ -8,6 +8,14 @@ class TestCalculator(unittest.TestCase):
         main.app.test = True
         self.app = main.app.test_client()
 
+    #Testing handler for methods responses
+    def test_handler(self):
+        resp = self.app.get('/')
+        self.assertEqual(b'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n', resp.data)
+
+        resp = self.app.post('/')
+        self.assertEqual(b'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n', resp.data)
+
     # Testing for substraction using integers
     def test_sub(self):
         resp = self.app.get('/sub?A=5&B=1')
@@ -65,7 +73,7 @@ class TestCalculator(unittest.TestCase):
 
         #Testing for A as integer and B is zero.
         resp = self.app.get('/div?A=2&B=0')
-        self.assertEqual(b'Error: undefined value!, denominator should not be a zero! \n', resp.data)
+        self.assertEqual(b'Error: undefined value!, denominator B should not be a zero! \n', resp.data)
 
         #Testing for A as an non numerical case.
         resp = self.app.get('/div?A=hej&B=21')
