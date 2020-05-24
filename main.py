@@ -47,10 +47,21 @@ def addition():
 
 @app.route('/mul', methods = ['POST', 'GET'])
 def multiplication():
-    value1=request.args.get('A',default = 0, type = int)
-    value2=request.args.get('B',default = 0, type = int)
-    result=value1*value2
-    return '%d \n' % result
+    try:
+        value1, value2 = input_values()
+        try:
+            result = ((value1)*(value2))
+        except ZeroDivisionError:
+            zero_division_error = "Error: undefined value!, The value of B must not be a 0, change the value of B. \n"
+            return zero_division_error
+    except ValueError:
+        value_error = input_values()
+        return value_error
+    else:
+        if float(result).is_integer():
+            result = int(result)
+            return("Value by multiplying A & B is: " '%d \n' % result)
+        return("Roundup value upto three digits by multiplying A & B values is: " '%.3f \n' % result)
 
 @app.route('/div', methods = ['POST', 'GET'])
 def division():
