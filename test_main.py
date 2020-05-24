@@ -65,15 +65,15 @@ class TestCalculator(unittest.TestCase):
 
         #Testing for A's value as, denominator is a zero and numerator is an integer.
         resp = self.app.get('/div?A=2/0&B=7')
-        self.assertEqual(b'Error: undefined value!, denominator of A value should not be a zero! \n', resp.data) 
+        self.assertEqual(b'Error: undefined value!, The denominator of A should not be a 0!, change the value of A \n', resp.data) 
 
          #Testing for B's value as, denominator is a zero and numerator is an integer.
         resp = self.app.get('/div?A=2&B=7/0')
-        self.assertEqual(b'Error: undefined value!, denominator of B value should not be a zero! \n', resp.data) 
+        self.assertEqual(b'Error: undefined value!, The denominator of B should not be a 0!, change the value of B \n', resp.data) 
 
         #Testing for A as integer and B is zero.
         resp = self.app.get('/div?A=2&B=0')
-        self.assertEqual(b'Error: undefined value!, denominator B should not be a zero! \n', resp.data)
+        self.assertEqual(b'Error: undefined value!, The value of B must not be a 0, change the value of B. \n', resp.data)
 
         #Testing for A as an non numerical case.
         resp = self.app.get('/div?A=hej&B=21')
