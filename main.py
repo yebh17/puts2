@@ -34,10 +34,17 @@ def index():
 
 @app.route('/sub', methods = ['POST', 'GET'])
 def substraction():
-    value1=request.args.get('A',default = 0, type = int)
-    value2=request.args.get('B',default = 0, type = int)
-    result=value1-value2
-    return '%d \n' % result
+    try:
+        value1, value2 = input_values()
+        result = ((value1)-(value2))
+    except ValueError:
+        value_error = input_values()
+        return value_error
+    else:
+        if float(result).is_integer():
+            result = int(result)
+            return("Value by substracting A & B is: " '%d \n' % result)
+        return("Roundup value upto three digits by substracting A & B values is: " '%.3f \n' % result)
 @app.route('/add', methods = ['POST', 'GET'])
 def addition():
     value1=request.args.get('A',default = 0, type = int)
