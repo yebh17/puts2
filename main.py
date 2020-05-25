@@ -1,4 +1,3 @@
- 
 from flask import Flask, request
 from fractions import Fraction
 
