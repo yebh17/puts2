@@ -4,10 +4,10 @@
 
 * The idea is to create a simple online calculator.The features are implemented in the following sequence.
 
-addition,
-subtraction,
-multiplication,
-division.
+    1. addition
+    2. subtraction
+    3. multiplication
+    4. division
 
 * As the solution is flask-based, it will be accessed via a http interface.
 
