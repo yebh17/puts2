@@ -4,10 +4,10 @@
 
 * The idea is to create a simple online calculator.The features are implemented in the following sequence.
 
-addition
-subtraction
-multiplication
-division
+addition,
+subtraction,
+multiplication,
+division.
 
 * As the solution is flask-based, it will be accessed via a http interface.
 
@@ -20,8 +20,10 @@ division
 1. clone the repository, "git clone https://github.com/yebh17/puts2.git"
 2. The python script was developed in version 3.7, so For running the main script type "python3 main.py"
 3. Go to the web browser and produce the below links for their respective sequences outputs.
-    I. For addition "http://127.0.0.1:5000/add?A=value1&B=value2"
-    II. For substraction "http://127.0.0.1:5000/sub?A=value1&B=value2"
-    III. For multiplication "http://127.0.0.1:5000/mul?A=value1&B=value2" 
-    IV. For division "http://127.0.0.1:5000/div?A=value1&B=value2"
+
+I. For addition "http://127.0.0.1:5000/add?A=value1&B=value2"
+II. For substraction "http://127.0.0.1:5000/sub?A=value1&B=value2"
+III. For multiplication "http://127.0.0.1:5000/mul?A=value1&B=value2" 
+IV. For division "http://127.0.0.1:5000/div?A=value1&B=value2"
+
 4. For running the tests script type "python3 test_main.py"
