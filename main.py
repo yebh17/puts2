@@ -30,6 +30,19 @@ def input_values():
 def index():
     return 'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n'
 
+@app.route('/add', methods = ['POST', 'GET'])
+def addition():
+    try:
+        value1, value2 = input_values()
+        result = ((value1)+(value2))
+    except ValueError:
+        value_error = input_values()
+        return value_error
+    else:
+        if float(result).is_integer():
+            result = int(result)
+            return("Value by addition of A & B is: " '%d \n' % result)
+        return("Roundup value upto three digits by addition of A & B values is: " '%.3f \n' % result)
 
 @app.route('/sub', methods = ['POST', 'GET'])
 def substraction():
@@ -44,20 +57,6 @@ def substraction():
             result = int(result)
             return("Value by substracting A & B is: " '%d \n' % result)
         return("Roundup value upto three digits by substracting A & B values is: " '%.3f \n' % result)
-
-@app.route('/add', methods = ['POST', 'GET'])
-def addition():
-    try:
-        value1, value2 = input_values()
-        result = ((value1)+(value2))
-    except ValueError:
-        value_error = input_values()
-        return value_error
-    else:
-        if float(result).is_integer():
-            result = int(result)
-            return("Value by addition of A & B is: " '%d \n' % result)
-        return("Roundup value upto three digits by addition of A & B values is: " '%.3f \n' % result)
 
 @app.route('/mul', methods = ['POST', 'GET'])
 def multiplication():

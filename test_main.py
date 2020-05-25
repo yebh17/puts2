@@ -16,53 +16,6 @@ class TestCalculator(unittest.TestCase):
         resp = self.app.post('/')
         self.assertEqual(b'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n', resp.data)
 
-    # Testing for substraction using integers
-    def test_sub(self):
-
-        # Testing for substracting using integrals.
-        resp = self.app.get('/sub?A=1&B=5')
-        self.assertEqual(b'Value by substracting A & B is: -4 \n', resp.data)
-
-        #Testing for substracting fractional values.
-        resp = self.app.get('/sub?A=1/3&B=2/3')
-        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -0.333 \n', resp.data)
-
-        #Testing for A value as integer and B value as float.
-        resp = self.app.get('/sub?A=11&B=3.174')
-        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: 7.826 \n', resp.data)
-
-        #Testing for A value as float and B value as integer.
-        resp = self.app.get('/sub?A=5.123&B=13')
-        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -7.877 \n', resp.data)      
-
-        # Testing for substraction for both float values.
-        resp = self.app.get('/sub?A=0.2&B=0.3')
-        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -0.100 \n', resp.data)
-
-        #Testing for A value as integer and B value as fraction.
-        resp = self.app.get('/sub?A=5&B=2/3')
-        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: 4.333 \n', resp.data)
-
-        #Testing for A value as fraction and B value as integer.
-        resp = self.app.get('/sub?A=2/3&B=7')
-        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -6.333 \n', resp.data)
-
-        #Testing for A's value as fraction and, denominator is a zero and numerator is an integer.
-        resp = self.app.get('/sub?A=2/0&B=7')
-        self.assertEqual(b'Error: undefined value!, The denominator of A should not be a 0!, change the value of A \n', resp.data) 
-
-         #Testing for B's value as fraction and, denominator is a zero and numerator is an integer.
-        resp = self.app.get('/sub?A=2&B=7/0')
-        self.assertEqual(b'Error: undefined value!, The denominator of B should not be a 0!, change the value of B \n', resp.data) 
-
-        #Testing for A as an non numerical case.
-        resp = self.app.get('/sub?A=hej&B=21')
-        self.assertEqual(b'Error: The A value should be a numerical and it can be integer, fractional, floats! \n', resp.data)
-
-        #Testing for B as an non numerical case.
-        resp = self.app.get('/sub?A=21&B=hello')
-        self.assertEqual(b'Error: The B value should be a numerical and it can be integer, fractional, floats! \n', resp.data)
-
     # Testing for addition using integers
     def test_add(self):
 
@@ -108,6 +61,53 @@ class TestCalculator(unittest.TestCase):
 
         #Testing for B as an non numerical case.
         resp = self.app.get('/add?A=21&B=hello')
+        self.assertEqual(b'Error: The B value should be a numerical and it can be integer, fractional, floats! \n', resp.data)
+
+    # Testing for substraction using integers
+    def test_sub(self):
+
+        # Testing for substracting using integrals.
+        resp = self.app.get('/sub?A=1&B=5')
+        self.assertEqual(b'Value by substracting A & B is: -4 \n', resp.data)
+
+        #Testing for substracting fractional values.
+        resp = self.app.get('/sub?A=1/3&B=2/3')
+        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -0.333 \n', resp.data)
+
+        #Testing for A value as integer and B value as float.
+        resp = self.app.get('/sub?A=11&B=3.174')
+        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: 7.826 \n', resp.data)
+
+        #Testing for A value as float and B value as integer.
+        resp = self.app.get('/sub?A=5.123&B=13')
+        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -7.877 \n', resp.data)      
+
+        # Testing for substraction for both float values.
+        resp = self.app.get('/sub?A=0.2&B=0.3')
+        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -0.100 \n', resp.data)
+
+        #Testing for A value as integer and B value as fraction.
+        resp = self.app.get('/sub?A=5&B=2/3')
+        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: 4.333 \n', resp.data)
+
+        #Testing for A value as fraction and B value as integer.
+        resp = self.app.get('/sub?A=2/3&B=7')
+        self.assertEqual(b'Roundup value upto three digits by substracting A & B values is: -6.333 \n', resp.data)
+
+        #Testing for A's value as fraction and, denominator is a zero and numerator is an integer.
+        resp = self.app.get('/sub?A=2/0&B=7')
+        self.assertEqual(b'Error: undefined value!, The denominator of A should not be a 0!, change the value of A \n', resp.data) 
+
+         #Testing for B's value as fraction and, denominator is a zero and numerator is an integer.
+        resp = self.app.get('/sub?A=2&B=7/0')
+        self.assertEqual(b'Error: undefined value!, The denominator of B should not be a 0!, change the value of B \n', resp.data) 
+
+        #Testing for A as an non numerical case.
+        resp = self.app.get('/sub?A=hej&B=21')
+        self.assertEqual(b'Error: The A value should be a numerical and it can be integer, fractional, floats! \n', resp.data)
+
+        #Testing for B as an non numerical case.
+        resp = self.app.get('/sub?A=21&B=hello')
         self.assertEqual(b'Error: The B value should be a numerical and it can be integer, fractional, floats! \n', resp.data)
 
     # Testing for multiplication using integers
