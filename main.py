@@ -45,12 +45,20 @@ def substraction():
             result = int(result)
             return("Value by substracting A & B is: " '%d \n' % result)
         return("Roundup value upto three digits by substracting A & B values is: " '%.3f \n' % result)
+
 @app.route('/add', methods = ['POST', 'GET'])
 def addition():
-    value1=request.args.get('A',default = 0, type = int)
-    value2=request.args.get('B',default = 0, type = int)
-    result=value1+value2
-    return '%d \n' % result
+    try:
+        value1, value2 = input_values()
+        result = ((value1)+(value2))
+    except ValueError:
+        value_error = input_values()
+        return value_error
+    else:
+        if float(result).is_integer():
+            result = int(result)
+            return("Value by addition of A & B is: " '%d \n' % result)
+        return("Roundup value upto three digits by addition of A & B values is: " '%.3f \n' % result)
 
 @app.route('/mul', methods = ['POST', 'GET'])
 def multiplication():
@@ -87,5 +95,6 @@ def division():
             result = int(result)
             return("Value by dividing A & B is: " '%d \n' % result)
         return("Roundup value upto three digits by dividing A & B values is: " '%.3f \n' % result)
+
 if __name__ == "__main__":
     app.run(debug=True)
