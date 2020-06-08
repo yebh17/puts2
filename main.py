@@ -41,8 +41,8 @@ def addition():
     else:
         if float(result).is_integer():
             result = int(result)
-            return("Value by addition of A & B is: " '%d \n' % result)
-        return("Roundup value upto three digits by addition of A & B values is: " '%.3f \n' % result)
+            return('%d \n' % result)
+        return('%.3f \n' % result)
 
 @app.route('/sub', methods = ['POST', 'GET'])
 def substraction():
@@ -55,8 +55,8 @@ def substraction():
     else:
         if float(result).is_integer():
             result = int(result)
-            return("Value by substracting A & B is: " '%d \n' % result)
-        return("Roundup value upto three digits by substracting A & B values is: " '%.3f \n' % result)
+            return('%d \n' % result)
+        return('%.3f \n' % result)
 
 @app.route('/mul', methods = ['POST', 'GET'])
 def multiplication():
@@ -73,8 +73,8 @@ def multiplication():
     else:
         if float(result).is_integer():
             result = int(result)
-            return("Value by multiplying A & B is: " '%d \n' % result)
-        return("Roundup value upto three digits by multiplying A & B values is: " '%.3f \n' % result)
+            return('%d \n' % result)
+        return('%.3f \n' % result)
 
 @app.route('/div', methods = ['POST', 'GET'])
 def division():
@@ -91,8 +91,8 @@ def division():
     else:
         if float(result).is_integer():
             result = int(result)
-            return("Value by dividing A & B is: " '%d \n' % result)
-        return("Roundup value upto three digits by dividing A & B values is: " '%.3f \n' % result)
+            return('%d \n' % result)
+        return('%.3f \n' % result)
 
 if __name__ == "__main__":
     app.run(debug=True)
