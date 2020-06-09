@@ -121,6 +121,10 @@ class TestCalculator(unittest.TestCase):
     # Testing for multiplication using integers
     def test_mul(self):
 
+        #Testing wether POST method is satisfying to return the result.
+        resp = self.app.post('/mul', data = dict(A = '2', B = '5'))
+        self.assertEqual(b'10 \n', resp.data)
+
         # Testing for multiplication using integrals.
         resp = self.app.get('/mul?A=1&B=5')
         self.assertEqual(b'5 \n', resp.data)
@@ -150,11 +154,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'4.667 \n', resp.data)
 
         #Testing for A's value as fraction and, denominator is a zero and numerator is an integer.
-        resp = self.app.get('/mul?A=2/0&B=7')
+        resp = self.app.get('/mul?A=2/0&B=4/3')
         self.assertEqual(b'Error: undefined value!, The denominator of A should not be a 0!, change the value of A \n', resp.data) 
 
          #Testing for B's value asfraction and, denominator is a zero and numerator is an integer.
-        resp = self.app.get('/mul?A=2&B=7/0')
+        resp = self.app.get('/mul?A=4/3&B=7/0')
         self.assertEqual(b'Error: undefined value!, The denominator of B should not be a 0!, change the value of B \n', resp.data) 
 
         #Testing for A as an non numerical case.
