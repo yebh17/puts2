@@ -19,6 +19,10 @@ class TestCalculator(unittest.TestCase):
     # Testing for addition using integers
     def test_add(self):
 
+        #Testing wether POST method is satisfying to return the result.
+        resp = self.app.post('/add', data = dict(A = '2', B = '5'))
+        self.assertEqual(b'7 \n', resp.data)
+
         # Testing for addition using integrals.
         resp = self.app.get('/add?A=1&B=5')
         self.assertEqual(b'6 \n', resp.data)
