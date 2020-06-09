@@ -172,6 +172,10 @@ class TestCalculator(unittest.TestCase):
     # Testing for division
     def test_div(self):
 
+        #Testing wether POST method is satisfying to return the result.
+        resp = self.app.post('/div', data = dict(A = '2', B = '5'))
+        self.assertEqual(b'0.400 \n', resp.data)
+
         # Testing for division using integrals.
         resp = self.app.get('/div?A=24&B=12')
         self.assertEqual(b'2 \n', resp.data)
@@ -205,11 +209,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'0.095 \n', resp.data)
 
         #Testing for A's value as fraction and, denominator is a zero and numerator is an integer.
-        resp = self.app.get('/div?A=2/0&B=7')
+        resp = self.app.get('/div?A=2/0&B=7/3')
         self.assertEqual(b'Error: undefined value!, The denominator of A should not be a 0!, change the value of A \n', resp.data) 
 
          #Testing for B's value as fraction and, denominator is a zero and numerator is an integer.
-        resp = self.app.get('/div?A=2&B=7/0')
+        resp = self.app.get('/div?A=7&B=7/0')
         self.assertEqual(b'Error: undefined value!, The denominator of B should not be a 0!, change the value of B \n', resp.data) 
 
         #Testing for A as integer and B is zero.
