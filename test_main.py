@@ -32,8 +32,8 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'0.833 \n', resp.data)
 
         #Testing for A value as integer and B value as float.
-        resp = self.app.get('/add?A=11&B=3.174')
-        self.assertEqual(b'14.174 \n', resp.data)
+        resp = self.app.get('/add?A=11&B=-3.174')
+        self.assertEqual(b'7.826 \n', resp.data)
 
         #Testing for A value as float and B value as integer.
         resp = self.app.get('/add?A=5.123&B=13')
@@ -44,8 +44,8 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'0.500 \n', resp.data)
 
         #Testing for A value as integer and B value as fraction.
-        resp = self.app.get('/add?A=5&B=2/3')
-        self.assertEqual(b'5.667 \n', resp.data)
+        resp = self.app.get('/add?A=-5&B=2/3')
+        self.assertEqual(b'-4.333 \n', resp.data)
 
         #Testing for A value as fraction and B value as integer.
         resp = self.app.get('/add?A=2/3&B=7')
@@ -83,16 +83,16 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'-0.333 \n', resp.data)
 
         #Testing for A value as integer and B value as float.
-        resp = self.app.get('/sub?A=11&B=3.174')
-        self.assertEqual(b'7.826 \n', resp.data)
+        resp = self.app.get('/sub?A=-11&B=3.174')
+        self.assertEqual(b'-14.174 \n', resp.data)
 
         #Testing for A value as float and B value as integer.
         resp = self.app.get('/sub?A=5.123&B=13')
         self.assertEqual(b'-7.877 \n', resp.data)      
 
         # Testing for substraction for both float values.
-        resp = self.app.get('/sub?A=0.2&B=0.3')
-        self.assertEqual(b'-0.100 \n', resp.data)
+        resp = self.app.get('/sub?A=0.2&B=-0.3')
+        self.assertEqual(b'0.500 \n', resp.data)
 
         #Testing for A value as integer and B value as fraction.
         resp = self.app.get('/sub?A=5&B=2/3')
@@ -138,8 +138,8 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'34.914 \n', resp.data)
 
         #Testing for A value as float and B value as integer.
-        resp = self.app.get('/mul?A=5.123&B=13')
-        self.assertEqual(b'66.599 \n', resp.data)      
+        resp = self.app.get('/mul?A=5.123&B=-13')
+        self.assertEqual(b'-66.599 \n', resp.data)      
 
         # Testing for multiplication for both float values.
         resp = self.app.get('/mul?A=0.2&B=0.3')
@@ -150,8 +150,8 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'3.333 \n', resp.data)
 
         #Testing for A value as fraction and B value as integer.
-        resp = self.app.get('/mul?A=2/3&B=7')
-        self.assertEqual(b'4.667 \n', resp.data)
+        resp = self.app.get('/mul?A=-2/3&B=7')
+        self.assertEqual(b'-4.667 \n', resp.data)
 
         #Testing for A's value as fraction and, denominator is a zero and numerator is an integer.
         resp = self.app.get('/mul?A=2/0&B=4/3')
@@ -185,16 +185,16 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(b'0.500 \n', resp.data)
 
         # Testing for division for integer values.
-        resp = self.app.get('/div?A=11&B=7')
-        self.assertEqual(b'1.571 \n', resp.data)
+        resp = self.app.get('/div?A=-11&B=7')
+        self.assertEqual(b'-1.571 \n', resp.data)
 
         #Testing for A value as integer and B value as float.
         resp = self.app.get('/div?A=11&B=3.174')
         self.assertEqual(b'3.466 \n', resp.data)
 
         #Testing for A value as float and B value as integer.
-        resp = self.app.get('/div?A=5.123&B=13')
-        self.assertEqual(b'0.394 \n', resp.data)      
+        resp = self.app.get('/div?A=5.123&B=-13')
+        self.assertEqual(b'-0.394 \n', resp.data)      
 
         # Testing for division for both float values.
         resp = self.app.get('/div?A=0.2&B=0.3')
