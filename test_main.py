@@ -27,6 +27,10 @@ class TestCalculator(unittest.TestCase):
         resp = self.app.get('/add?A=1&B=5')
         self.assertEqual(b'6 \n', resp.data)
 
+        # Testing for addition using integrals.
+        resp = self.app.get('/add?A=-1&B=-5')
+        self.assertEqual(b'-6 \n', resp.data)
+
         #Testing for addition of fractional values.
         resp = self.app.get('/add?A=1/3&B=2/4')
         self.assertEqual(b'0.833 \n', resp.data)
