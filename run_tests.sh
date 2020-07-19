@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/usr/bin/python3 ../puts2/test_main.py
+/usr/bin/python3 test_main.py
