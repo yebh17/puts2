@@ -1,4 +1,7 @@
+Jenkinsfile
 pipeline {
+  agent
+    agent any
     stages {
         stage('build') {
             steps {
